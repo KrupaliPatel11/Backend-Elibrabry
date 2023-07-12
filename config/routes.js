@@ -18,6 +18,6 @@ module.exports.routes = {
     "POST /user/login": "UserController.userLogin",
     "POST /user/logout": "UserController.userLogout",
     "GET /user/books": "UserController.gelAllBook",
-    "GET /user/book/:id": "UserController.getOneBook",
+    "GET /user/book/download/:id" : "BookController.downloadBook"
 
 };
