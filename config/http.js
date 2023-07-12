@@ -23,6 +23,8 @@ module.exports.http = {
 
   middleware: {
 
+
+
     /***************************************************************************
     *                                                                          *
     * The order in which middleware should be run for HTTP requests.           *
@@ -33,13 +35,13 @@ module.exports.http = {
     order: [
       //   'cookieParser',
       //   'session',
-        'bodyParser',
+      'bodyParser',
       //   'compress',
       //   'poweredBy',
       //   'router',
       //   'www',
       //   'favicon',
-      "static"
+      "static",
     ],
 
 
@@ -51,15 +53,16 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    bodyParser: (function _configureBodyParser(){
+    bodyParser: (function _configureBodyParser() {
       var skipper = require('skipper');
       var middlewareFn = skipper({ strict: true });
       return middlewareFn;
     })(),
+
     static: function (req, res, next) {
       express.static(path.resolve(__dirname, '../public'))(req, res, next);
     }
 
-  },
-
+  }
 };
+

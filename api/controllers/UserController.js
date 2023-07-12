@@ -71,7 +71,7 @@ module.exports = {
     const token = await User.update({ id: user.id }).set({ token: genToken });
     return res.status(200).json({ success: true, token: genToken });
   },
-  
+
   adminLogin: async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
@@ -131,12 +131,32 @@ module.exports = {
   },
 
   // All Book By user
-  gelAllBook: async (req, res) => {
-    const book = await Book.find();
-    if (book.length <= 0) {
-      return res.status(404).json({ success: false, msg: "Not Any Book" });
-    } else {
-      return res.status(200).json({ success: true, msg: "Books", books: book });
-    }
-  },
+    gelAllBook: async (req, res) => {
+      const book = await Book.find();
+      if (book.length <= 0) {
+        return res.status(404).json({ success: false, msg: "Not Any Book" });
+      } else {
+        return res.status(200).json({ success: true, msg: "Books", books: book });
+      }
+    },
+
+
+//   gelAllBook: async (req, res) => {
+
+//     let queryParams = {},
+//       pageNum = req.query.pageNum || 1,
+//       limit = req.query.pageSize || 10;
+//       await Book.count(queryParams).then(async (_count) => {
+//       console.log(_count)
+//       const book = await Book.find(queryParams).paginate(pageNum, limit)
+//       return {
+//         count: book.length,
+//         book: book
+//       }
+//     }).then(res.ok)
+//       .catch(err => res.negotiate(err, message));
+
+//   }
+
 };
+
