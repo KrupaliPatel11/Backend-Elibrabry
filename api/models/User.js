@@ -9,14 +9,6 @@ const {v4 : uuidv4} = require('uuid');
 
 module.exports = {
   attributes: {
-    // id : {
-    //   type : "string",
-    //   columnName : 'id',
-    //   columnType : "uuid",
-    //   required : true,
-    //   unique : true,
-    //   // defaultsTo : () => uuidv4()
-    // },
     name: {
       type: "string",
       required: true,
@@ -40,10 +32,6 @@ module.exports = {
       type : "string"
     }
   },
-  
-// beforeCreate : function(values, proceed) {
-//   values =  uuidv4();
-//   return proceed();
-// }
+
 } 
 

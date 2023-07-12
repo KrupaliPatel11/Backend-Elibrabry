@@ -15,13 +15,9 @@ module.exports = {
       type: "string",
       required: true,
     },
-    // image: {
-    //   type: "string",
-    // },
     pdf: {
       type: "string",
-      // required: true,
+      required: true,
     },
   },
 };
-//Krupali@1

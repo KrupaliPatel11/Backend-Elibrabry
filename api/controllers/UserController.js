@@ -8,8 +8,6 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const uuid = require('uuid-random');
-// const uuid = require("uuid");
-// const { beforeCreate } = require("../models/User");
 
 module.exports = {
   // User Signup
@@ -59,12 +57,12 @@ module.exports = {
         .status(400)
         .json({ success: false, msg: "Please Enter Valid Credentials" });
     }
-    const genToken = await jwt.sign({ id: user.id, role: user.role }, 
+    const genToken = await jwt.sign({ id: user.id, role: user.role },
       // process.env.JWY_KEY,
       "krupali11",
-       {
-      expiresIn: "3d",
-    });
+      {
+        expiresIn: "3d",
+      });
     if (!genToken) {
       return res
         .status(500)
@@ -73,8 +71,7 @@ module.exports = {
     const token = await User.update({ id: user.id }).set({ token: genToken });
     return res.status(200).json({ success: true, token: genToken });
   },
-
-  // admin login
+  
   adminLogin: async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
@@ -142,15 +139,4 @@ module.exports = {
       return res.status(200).json({ success: true, msg: "Books", books: book });
     }
   },
-
-  getOneBook: async (req, res) => {
-    const id = req.params.id;
-    console.log(id)
-
-    const book = await Book.findOne({ id: id });
-    if (!book) {
-      return res.status(400).json({ msg: "Enter Valid ID", success: false });
-    }
-    return res.status(200).json({ book: book });
-  }
 };
