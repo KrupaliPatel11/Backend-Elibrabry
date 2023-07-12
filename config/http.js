@@ -8,7 +8,8 @@
  * For more information on configuration, check out:
  * https://sailsjs.com/config/http
  */
-
+const express = require('express');
+const path = require('path');
 module.exports.http = {
 
   /****************************************************************************
@@ -29,16 +30,17 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // order: [
-    //   'cookieParser',
-    //   'session',
-    //   'bodyParser',
-    //   'compress',
-    //   'poweredBy',
-    //   'router',
-    //   'www',
-    //   'favicon',
-    // ],
+    order: [
+      //   'cookieParser',
+      //   'session',
+        'bodyParser',
+      //   'compress',
+      //   'poweredBy',
+      //   'router',
+      //   'www',
+      //   'favicon',
+      "static"
+    ],
 
 
     /***************************************************************************
@@ -49,11 +51,14 @@ module.exports.http = {
     *                                                                          *
     ***************************************************************************/
 
-    // bodyParser: (function _configureBodyParser(){
-    //   var skipper = require('skipper');
-    //   var middlewareFn = skipper({ strict: true });
-    //   return middlewareFn;
-    // })(),
+    bodyParser: (function _configureBodyParser(){
+      var skipper = require('skipper');
+      var middlewareFn = skipper({ strict: true });
+      return middlewareFn;
+    })(),
+    static: function (req, res, next) {
+      express.static(path.resolve(__dirname, '../public'))(req, res, next);
+    }
 
   },
 
