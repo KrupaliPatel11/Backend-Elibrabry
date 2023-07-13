@@ -20,9 +20,7 @@ module.exports.policies = {
   // '*': true,
   UserController: {
     userLogout: ["check_auth"],
-    gelAllBook: ["check_auth"],
-    adminLogout: ["check_auth", "roleAuth"],
-    adminLogin: ["check_auth"]
+    gelAllBook: ["check_auth"]
   },
 
   BookController: {

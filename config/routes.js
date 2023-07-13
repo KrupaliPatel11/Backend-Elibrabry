@@ -10,8 +10,6 @@
 
 module.exports.routes = {
 
-    "POST /admin/login": "UserController.adminLogin",
-    "POST /admin/logout": "UserController.adminLogout",
     "POST /admin/book/upload": "BookController.uploadBook",
 
     "POST /user/signup": "UserController.userSignup",

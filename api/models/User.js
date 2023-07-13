@@ -5,7 +5,7 @@
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
 
-const {v4 : uuidv4} = require('uuid');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   attributes: {
@@ -28,10 +28,10 @@ module.exports = {
       isIn: Object.values(sails.config.enum.role),
       defaultsTo: sails.config.enum.role.USER,
     },
-    token : {
-      type : "string"
+    token: {
+      type: "string"
     }
   },
 
-} 
+}
 
