@@ -17,15 +17,14 @@ module.exports = {
     },
   },
   fn: async function (subject, message) {
-    let transporter = await nodemailer.createTransport({
+    var transporter = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       auth: {
-        user: "7c194f25cc0d13",
-        pass: "f32bf5576d71a8",
-      },
+        user: "29f018184185d9",
+        pass: "********b45e"
+      }
     });
-
     const users = await User.find();
     // console.log(users);
 
@@ -33,12 +32,12 @@ module.exports = {
       const subject = "E-Library";
       const message = "New Book Added To Your E-Library"
       const mailOptions = {
-        from: "your-email@example.com", // Sender email address
-        to: user.email, // Recipient email address
-        subject:subject, // Subject of the email
-        text: message, // Plain text version of the email (can be HTML if you prefer)
+        from: "admin@krupali.com", 
+        to: user.email, 
+        subject:subject, 
+        text: message, 
       };
-      // console.log("message sent : %s", info.messageId);
+      
       await transporter.sendMail(mailOptions);
     }
   },
